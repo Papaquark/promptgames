@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{SITE_NAME}} — {{TAGLINE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="theme-color" content="#0b0908">
+  {{META}}
+  <link rel="icon" href="static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="{{SITE_NAME}} home">
+      <span class="brand-mark" aria-hidden="true">✦</span>
+      <span class="brand-name">{{SITE_NAME}}</span>
+    </a>
+    <p class="brand-tagline">{{TAGLINE}}</p>
+  </header>
+
+  <main id="main" class="home-main">
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">Interactive prompts for your favourite AI</p>
+      <h1 id="hero-title">Choose a story.<br><span class="accent">Let the AI run it.</span></h1>
+      <p class="hero-lede">{{INTRO}}</p>
+      <ol class="how-to" aria-label="How it works">
+        <li><span class="step" aria-hidden="true">1</span>Pick a game</li>
+        <li><span class="step" aria-hidden="true">2</span>Read the prompt</li>
+        <li><span class="step" aria-hidden="true">3</span>Play with Google AI</li>
+      </ol>
+    </section>
+
+    <section class="library" aria-labelledby="library-title">
+      <div class="section-heading">
+        <h2 id="library-title">The library</h2>
+        <p>{{GAME_COUNT}} game{{GAME_PLURAL}} in the library</p>
+      </div>
+
+      <div class="game-grid">
+        {{GAME_CARDS}}
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>{{SITE_NAME}} · handcrafted prompts for curious players.</p>
+    <p class="footer-note">No sign-up here. Play opens Google Gemini in a new tab.</p>
+  </footer>
+
+  <script src="static/app.js" defer></script>
+</body>
+</html>

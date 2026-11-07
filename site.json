@@ -1,0 +1,9 @@
+{
+  "name": "Prompt & Play",
+  "tagline": "Pick a prompt. Start an adventure.",
+  "description": "A small library of handcrafted prompt games you can play with Google AI.",
+  "intro": "Prompt games are self-contained adventures you paste into an AI. It becomes the game master; you make the choices. Pick one below, read the prompt, and let the story begin.",
+  "defaultAuthor": "Michael",
+  "playUrl": "https://gemini.google.com/app",
+  "baseUrl": ""
+}

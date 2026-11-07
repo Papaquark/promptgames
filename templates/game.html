@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE}} — {{SITE_NAME}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="theme-color" content="#0b0908">
+  {{META}}
+  <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="{{SITE_NAME}} home">
+      <span class="brand-mark" aria-hidden="true">✦</span>
+      <span class="brand-name">{{SITE_NAME}}</span>
+    </a>
+    <p class="brand-tagline">{{TAGLINE}}</p>
+  </header>
+
+  <main id="main" class="game-main">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html"><span aria-hidden="true">←</span> All games</a>
+    </nav>
+
+    <article class="game">
+      <header class="game-header">
+        <span class="game-icon-frame">
+          <img class="game-icon" src="{{ICON}}" alt="" width="64" height="64">
+        </span>
+        <div class="game-heading">
+          <div class="game-meta-row">
+            <p class="eyebrow">Solo prompt game</p>
+            {{LANGUAGE_BADGE}}
+          </div>
+          <h1 lang="{{LANG}}">{{TITLE}}</h1>
+          <p class="game-author">by <span>{{AUTHOR}}</span></p>
+        </div>
+      </header>
+
+      <p class="game-description" lang="{{LANG}}">{{DESCRIPTION}}</p>
+
+      <div class="game-actions" role="group" aria-label="Play this game">
+        <button class="button button-primary" type="button" data-play data-prompt-id="prompt-text" data-play-url="{{PLAY_URL}}" aria-describedby="action-note">
+          Play on Google AI <span aria-hidden="true">↗</span>
+        </button>
+        <button class="button button-secondary" type="button" data-copy data-prompt-id="prompt-text" aria-describedby="action-note">
+          Copy prompt
+        </button>
+      </div>
+      <p class="action-note" id="action-note">Play opens Gemini in a new tab and copies the prompt. Paste it in and press send.</p>
+      <noscript>
+        <p class="action-note noscript-note">JavaScript is disabled, so the copy and play buttons will not work. Select the prompt below and copy it manually.</p>
+      </noscript>
+
+      <section class="prompt-section" aria-labelledby="prompt-title">
+        <div class="prompt-heading">
+          <h2 id="prompt-title">The prompt</h2>
+          <span class="prompt-meta">{{WORD_COUNT}} words</span>
+        </div>
+
+        <div class="prompt-frame" id="prompt-frame">
+          <pre class="prompt-preview" id="prompt-text" tabindex="0" lang="{{LANG}}" aria-label="Full game prompt">{{PROMPT}}</pre>
+          <div class="prompt-fade" aria-hidden="true"></div>
+        </div>
+        <button class="text-button" type="button" data-expand data-target="prompt-frame" hidden aria-expanded="false" aria-controls="prompt-frame">
+          Show full prompt
+        </button>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>{{SITE_NAME}} · handcrafted prompts for curious players.</p>
+    <p class="footer-note">Your game lives in Gemini. This page only holds the prompt.</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="../static/app.js" defer></script>
+</body>
+</html>
