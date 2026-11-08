@@ -5,5 +5,5 @@
   "intro": "Prompt games are self-contained adventures you paste into an AI. It becomes the game master; you make the choices. Pick one below, read the prompt, and let the story begin.",
   "defaultAuthor": "Michael",
   "playUrl": "https://gemini.google.com/app",
-  "baseUrl": ""
+  "baseUrl": "http://papaquark.github.io/promptgames"
 }
