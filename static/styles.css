@@ -58,13 +58,16 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   min-height: 100vh;
+  overflow-x: clip;
   background-color: var(--paper);
   background-image:
     radial-gradient(950px 520px at 50% -12%, rgba(73, 171, 63, 0.2), transparent 66%),
     radial-gradient(700px 440px at 96% 4%, rgba(206, 107, 64, 0.13), transparent 70%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cg fill='%2349ab3f' fill-opacity='.16'%3E%3Crect x='18' y='24' width='5' height='5'/%3E%3Crect x='96' y='64' width='5' height='5'/%3E%3Crect x='52' y='116' width='5' height='5'/%3E%3C/g%3E%3Cg fill='%23ce6b40' fill-opacity='.18'%3E%3Crect x='72' y='18' width='5' height='5'/%3E%3Crect x='126' y='104' width='5' height='5'/%3E%3Crect x='28' y='88' width='5' height='5'/%3E%3C/g%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cg fill='%2349ab3f' fill-opacity='.1'%3E%3Crect x='18' y='24' width='5' height='5'/%3E%3Crect x='96' y='64' width='5' height='5'/%3E%3Crect x='52' y='116' width='5' height='5'/%3E%3C/g%3E%3Cg fill='%23ce6b40' fill-opacity='.12'%3E%3Crect x='72' y='18' width='5' height='5'/%3E%3Crect x='126' y='104' width='5' height='5'/%3E%3Crect x='28' y='88' width='5' height='5'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: no-repeat, no-repeat, repeat;
   background-size: auto, auto, 140px 140px;
   color: var(--ink);
@@ -165,14 +168,42 @@ a:hover {
 
 .home-main,
 .game-main {
+  flex: 1 0 auto;
   width: min(100% - 3rem, var(--page));
   margin: 0 auto;
 }
 
 .hero {
-  position: relative;
-  max-width: 900px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.65fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
   padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(2.5rem, 6vw, 4rem);
+}
+
+.hero-copy {
+  min-width: 0;
+}
+
+.quest-card {
+  padding: 1.5rem 1.6rem;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  box-shadow: 7px 7px 0 var(--orange);
+  transform: rotate(1.2deg);
+}
+
+.quest-kicker {
+  margin: 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .eyebrow {
@@ -194,16 +225,16 @@ a:hover {
 .hero h1 {
   margin: 1.1rem 0 1.5rem;
   font-family: var(--display);
-  font-size: clamp(2.9rem, 8vw, 6rem);
+  font-size: clamp(2.7rem, 6.4vw, 5.4rem);
   font-weight: 800;
   letter-spacing: -0.045em;
-  line-height: 0.94;
+  line-height: 0.96;
   text-wrap: balance;
 }
 
 .accent {
   display: inline;
-  padding: 0 0.08em;
+  padding: 0.04em 0.16em;
   background: var(--green);
   color: var(--ink);
   box-decoration-break: clone;
@@ -219,13 +250,13 @@ a:hover {
 
 .how-to {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1.6rem;
-  margin: 2.25rem 0 0;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin: 1.05rem 0 0;
   padding: 0;
   list-style: none;
   color: var(--ink-soft);
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 700;
 }
 
@@ -296,10 +327,11 @@ a:hover {
 .game-card {
   position: relative;
   display: grid;
-  grid-template-columns: 88px minmax(0, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: 144px minmax(0, 1fr);
+  gap: 1.6rem;
+  max-width: 920px;
   overflow: hidden;
-  padding: 1.6rem;
+  padding: 1.75rem;
   border: 3px solid var(--ink);
   border-radius: var(--radius);
   background: var(--paper-raised);
@@ -308,6 +340,10 @@ a:hover {
   box-shadow: var(--hard-shadow);
   transform: rotate(-0.6deg);
   transition: transform 170ms ease, box-shadow 170ms ease, background-color 170ms ease;
+}
+
+.game-card:only-child {
+  justify-self: center;
 }
 
 .game-card:nth-child(even) {
@@ -357,14 +393,19 @@ a:hover {
 }
 
 .card-icon-frame {
-  width: 88px;
-  height: 88px;
+  width: 144px;
+  height: 144px;
 }
 
-.card-icon,
+.card-icon {
+  width: 128px;
+  height: 128px;
+  image-rendering: pixelated;
+}
+
 .game-cover {
-  width: 64px;
-  height: 64px;
+  width: 100%;
+  height: 100%;
   image-rendering: pixelated;
 }
 
@@ -408,7 +449,7 @@ a:hover {
 .card-title {
   margin-top: 0.35rem;
   font-family: var(--display);
-  font-size: clamp(1.5rem, 2.4vw, 1.85rem);
+  font-size: clamp(1.7rem, 2.6vw, 2.1rem);
   font-weight: 800;
   letter-spacing: -0.025em;
   line-height: 1.1;
@@ -424,6 +465,7 @@ a:hover {
 }
 
 .card-description {
+  max-width: 62ch;
   margin-top: 0.85rem;
   color: var(--ink-soft);
   font-size: 0.94rem;
@@ -464,8 +506,8 @@ a:hover {
 
 .game-header {
   display: grid;
-  grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
-  align-items: center;
+  grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+  align-items: start;
   gap: clamp(1.5rem, 4vw, 2.5rem);
   padding-bottom: 2.25rem;
   border-bottom: 3px solid var(--ink);
@@ -473,11 +515,11 @@ a:hover {
 
 .game-cover-frame {
   width: 100%;
-  max-width: 200px;
+  max-width: 240px;
   aspect-ratio: 1;
-  padding: 0.7rem;
+  padding: 0.85rem;
   border-radius: 16px;
-  box-shadow: 7px 7px 0 var(--green-dark);
+  box-shadow: 8px 8px 0 var(--green-dark);
 }
 
 .game-cover {
@@ -486,7 +528,7 @@ a:hover {
   border-radius: 4px;
 }
 
-.game-heading {
+.game-info {
   min-width: 0;
 }
 
@@ -510,8 +552,8 @@ a:hover {
 }
 
 .game-description {
-  max-width: 65ch;
-  margin: 2rem 0;
+  max-width: 60ch;
+  margin: 1.25rem 0 1.75rem;
   color: var(--ink-soft);
   font-size: clamp(1.02rem, 1.6vw, 1.14rem);
   white-space: pre-line;
@@ -685,6 +727,7 @@ a:hover {
 }
 
 .site-footer {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -696,6 +739,23 @@ a:hover {
   background: var(--ink);
   color: var(--paper);
   font-size: 0.86rem;
+}
+
+/* A little pixel grass fringe ties the footer back to the game art. */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  right: 0;
+  left: 0;
+  height: 14px;
+  background-image:
+    linear-gradient(var(--green), var(--green)),
+    repeating-linear-gradient(90deg, var(--green) 0 14px, transparent 14px 28px);
+  background-repeat: no-repeat;
+  background-size: 100% 6px, 100% 8px;
+  background-position: bottom left, top left;
+  pointer-events: none;
 }
 
 .site-footer p {
@@ -739,6 +799,19 @@ a:hover {
   box-shadow: 5px 5px 0 var(--orange-dark);
 }
 
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 2.5rem;
+  }
+
+  .quest-card {
+    max-width: 460px;
+    transform: none;
+  }
+}
+
 @media (max-width: 720px) {
   .game-header {
     grid-template-columns: 1fr;
@@ -769,14 +842,28 @@ a:hover {
   }
 
   .game-card {
-    grid-template-columns: 68px minmax(0, 1fr);
+    grid-template-columns: 96px minmax(0, 1fr);
     gap: 1rem;
     padding: 1.2rem;
   }
 
+  .game-card,
+  .game-card:nth-child(even) {
+    transform: none;
+  }
+
+  .game-card:hover {
+    transform: translateY(-2px);
+  }
+
   .card-icon-frame {
-    width: 68px;
-    height: 68px;
+    width: 96px;
+    height: 96px;
+  }
+
+  .card-icon {
+    width: 64px;
+    height: 64px;
   }
 
   .game-actions .button {
