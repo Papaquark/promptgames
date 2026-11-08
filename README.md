@@ -2,7 +2,7 @@
 
 A small, playful fantasy library of prompt games. Each game is a self-contained prompt that turns a capable AI into a game master. Visitors can read the prompt, copy it, or open Google Gemini with it ready to paste.
 
-The visual style is drawn from a 64×64 pixel-art landscape: deep plum nights, grass-green accents, cream moonlight, and chunky pixel edges. Layout stays simple and readable, with a playful tone rather than a grim one.
+The visual style is a bright storybook built from the 64×64 Hovdingen pixel art: cream paper, dark plum ink, grass green, and roof orange, with chunky borders and hard offset shadows. Headings use the self-hosted Bricolage Grotesque font, while the layout stays simple and readable with a playful tone rather than a grim one.
 
 The site is a static site generated with Python. There is no server, database, login, or JavaScript framework.
 
@@ -137,7 +137,7 @@ requirements.txt          # Python dependency (Pillow)
 site.json                 # Site name, copy, default author, Gemini URL
 games/<slug>/             # One folder per game
 templates/                # HTML templates
-static/                   # CSS, JS, favicon
+static/                   # CSS, JS, favicon, self-hosted fonts
 dist/                     # Generated output (not committed)
 .github/workflows/        # GitHub Pages deployment
 ```

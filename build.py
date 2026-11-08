@@ -242,6 +242,18 @@ def write_icon(game: Game, destination: Path) -> None:
 
     try:
         with Image.open(game.icon) as source:
+            size = source.size
+    except OSError as exc:
+        raise BuildError(f"games/{game.slug}: could not read icon '{game.icon.name}': {exc}") from exc
+
+    # An already-published 64x64 PNG is copied byte-for-byte so the art is used
+    # exactly as the author supplied it (no re-encoding or colour changes).
+    if game.icon.suffix.lower() == ".png" and size == (64, 64):
+        shutil.copyfile(game.icon, destination)
+        return
+
+    try:
+        with Image.open(game.icon) as source:
             image = source.convert("RGBA")
     except OSError as exc:
         raise BuildError(f"games/{game.slug}: could not read icon '{game.icon.name}': {exc}") from exc
