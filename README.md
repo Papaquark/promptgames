@@ -126,8 +126,9 @@ This works for prompts of any length. Clipboard access requires HTTPS or `localh
 ## Included games
 
 - `games/hovdingen/` — **Hövdingen**, a Swedish narrative strategy game set in Skogsbryn. It uses `"language": "sv"` and `"languageLabel": "Svenska"`.
+- `games/ceo/` — **CEO**, a Swedish satirical business strategy game about running Färgstark Doft & Svamp AB. It also uses `"language": "sv"` and `"languageLabel": "Svenska"`.
 
-This is currently the only game in the build. Add more folders under `games/` to expand the library. Keep at least one game in `games/` or the build will stop with an error.
+The build currently contains these two games. Add more folders under `games/` to expand the library. Keep at least one game in `games/` or the build will stop with an error.
 
 ## Project layout
 
