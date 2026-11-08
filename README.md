@@ -1,6 +1,8 @@
 # Prompt & Play
 
-A small, dark-fantasy library of prompt games. Each game is a self-contained prompt that turns a capable AI into a game master. Visitors can read the prompt, copy it, or open Google Gemini with it ready to paste.
+A small, playful fantasy library of prompt games. Each game is a self-contained prompt that turns a capable AI into a game master. Visitors can read the prompt, copy it, or open Google Gemini with it ready to paste.
+
+The visual style is drawn from a 64×64 pixel-art landscape: deep plum nights, grass-green accents, cream moonlight, and chunky pixel edges. Layout stays simple and readable, with a playful tone rather than a grim one.
 
 The site is a static site generated with Python. There is no server, database, login, or JavaScript framework.
 
